@@ -1,18 +1,18 @@
-; Sledge NSIS Installer
+; Forgery NSIS Installer
 ; ---------------------
 
 ; Installer Info
-Name "Sledge"
-OutFile "Sledge.Editor.{version}.exe"
-InstallDir "$PROGRAMFILES\Sledge Editor"
-InstallDirRegKey HKLM "Software\Sledge\Editor" "InstallDir"
+Name "Forgery"
+OutFile "Forgery.Editor.{version}.exe"
+InstallDir "$PROGRAMFILES\Forgery Editor"
+InstallDirRegKey HKLM "Software\Forgery\Editor" "InstallDir"
 RequestExecutionLevel admin
 
 ; Version Info
 VIProductVersion "{version}"
 VIAddVersionKey "FileVersion" "{version}"
-VIAddVersionKey "ProductName" "Sledge Editor"
-VIAddVersionKey "FileDescription" "Installer for Sledge Editor"
+VIAddVersionKey "ProductName" "Forgery Editor"
+VIAddVersionKey "FileDescription" "Installer for Forgery Editor"
 VIAddVersionKey "LegalCopyright" "http://logic-and-trick.com 2018"
 
 ; Ensure Admin Rights
@@ -39,8 +39,8 @@ UninstPage instfiles
 
 ; Installer Sections
 
-Section "Sledge Editor"
-    IfSilent 0 +2 ; Silent mode: Sledge has executed the installer for an update
+Section "Forgery Editor"
+    IfSilent 0 +2 ; Silent mode: Forgery has executed the installer for an update
         Sleep 2000 ; Make sure the program has shut down...
     
     SectionIn RO
@@ -49,18 +49,18 @@ Section "Sledge Editor"
     ; Purge junk from old installs
     Delete "$INSTDIR\*.dll"
     Delete "$INSTDIR\*.pdb"
-    Delete "$INSTDIR\Sledge.Editor.Elevate.exe"
-    Delete "$INSTDIR\Sledge.Editor.Updater.exe"
+    Delete "$INSTDIR\Forgery.Editor.Elevate.exe"
+    Delete "$INSTDIR\Forgery.Editor.Updater.exe"
     Delete "$INSTDIR\UpdateSources.txt"
 
     File /r "Build\*"
     
-    WriteRegStr HKLM "Software\Sledge\Editor" "InstallDir" "$INSTDIR"
-    WriteRegStr HKLM "Software\Sledge\Editor" "Version" "{version}"
-    WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\SledgeEditor" "DisplayName" "Sledge Editor"
-    WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\SledgeEditor" "UninstallString" '"$INSTDIR\Uninstall.exe"'
-    WriteRegDWORD HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\SledgeEditor" "NoModify" 1
-    WriteRegDWORD HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\SledgeEditor" "NoRepair" 1
+    WriteRegStr HKLM "Software\Forgery\Editor" "InstallDir" "$INSTDIR"
+    WriteRegStr HKLM "Software\Forgery\Editor" "Version" "{version}"
+    WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\ForgeryEditor" "DisplayName" "Forgery Editor"
+    WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\ForgeryEditor" "UninstallString" '"$INSTDIR\Uninstall.exe"'
+    WriteRegDWORD HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\ForgeryEditor" "NoModify" 1
+    WriteRegDWORD HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\ForgeryEditor" "NoRepair" 1
     WriteUninstaller "Uninstall.exe"
 SectionEnd
 
@@ -69,9 +69,9 @@ Section "Start Menu Shortcuts"
         Goto end ; Silent update: Don't redo shortcuts
         
     SetShellVarContext all
-    CreateDirectory "$SMPROGRAMS\Sledge Editor"
-    CreateShortCut "$SMPROGRAMS\Sledge Editor\Uninstall.lnk" "$INSTDIR\Uninstall.exe" "" "$INSTDIR\Uninstall.exe" 0
-    CreateShortCut "$SMPROGRAMS\Sledge Editor\Sledge Editor.lnk" "$INSTDIR\Sledge.Editor.exe" "" "$INSTDIR\Sledge.Editor.exe" 0
+    CreateDirectory "$SMPROGRAMS\Forgery Editor"
+    CreateShortCut "$SMPROGRAMS\Forgery Editor\Uninstall.lnk" "$INSTDIR\Uninstall.exe" "" "$INSTDIR\Uninstall.exe" 0
+    CreateShortCut "$SMPROGRAMS\Forgery Editor\Forgery Editor.lnk" "$INSTDIR\Forgery.Editor.exe" "" "$INSTDIR\Forgery.Editor.exe" 0
 
     end:
 SectionEnd
@@ -81,28 +81,28 @@ Section "Desktop Shortcut"
         Goto end ; Silent update: Don't redo shortcuts
     
     SetShellVarContext all
-    CreateShortCut "$DESKTOP\Sledge Editor.lnk" "$INSTDIR\Sledge.Editor.exe" "" "$INSTDIR\Sledge.Editor.exe" 0
+    CreateShortCut "$DESKTOP\Forgery Editor.lnk" "$INSTDIR\Forgery.Editor.exe" "" "$INSTDIR\Forgery.Editor.exe" 0
     
     end:
 SectionEnd
 
-Section "Run Sledge After Installation"
+Section "Run Forgery After Installation"
     SetAutoClose true
-    Exec "$INSTDIR\Sledge.Editor.exe"
+    Exec "$INSTDIR\Forgery.Editor.exe"
 SectionEnd
 
 ; Uninstall
 
 Section "Uninstall"
 
-  DeleteRegKey HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\SledgeEditor"
-  DeleteRegKey HKLM "Software\Sledge\Editor"
+  DeleteRegKey HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\ForgeryEditor"
+  DeleteRegKey HKLM "Software\Forgery\Editor"
 
   SetShellVarContext all
-  Delete "$SMPROGRAMS\Sledge Editor\*.*"
-  Delete "$DESKTOP\Sledge Editor.lnk"
+  Delete "$SMPROGRAMS\Forgery Editor\*.*"
+  Delete "$DESKTOP\Forgery Editor.lnk"
 
-  RMDir /r "$SMPROGRAMS\Sledge Editor"
+  RMDir /r "$SMPROGRAMS\Forgery Editor"
   RMDir /r "$INSTDIR"
 
 SectionEnd

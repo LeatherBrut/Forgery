@@ -1,6 +1,6 @@
 ### What's going on here?
 
-To support Steam integration, Sledge needs to look through all the Steam dependencies to find the correct game files. Unfortunately, Steam stores this data in the binary ClientRegistry.blob file. 
+To support Steam integration, Forgery needs to look through all the Steam dependencies to find the correct game files. Unfortunately, Steam stores this data in the binary ClientRegistry.blob file. 
 
 Fortunately however, [Darien Hager][1] has created a very handy Java library called [hl2parse][2] (used in [PackBSP][3]), which, among other things, can parse the ClientRegistry file.
 
