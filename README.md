@@ -1,9 +1,6 @@
 Forgery
 ======
 
-I have stopped working on Forgery due to personal reasons. I will be working on other projects, but Forgery is too large for me to manage on my own.
-
-If you wish to continue development on the editor feel free to fork it - the only restriction is you don't call it Forgery. The BSD-3 license requires you to use a different name for your fork.
 
 ---
 
