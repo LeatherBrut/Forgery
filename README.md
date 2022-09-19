@@ -18,3 +18,11 @@ The Forgery Editor is licensed under BSD-3.
 
 [1]: http://Forgery-editor.com/
 [2]: https://github.com/mellinoe/veldrid/
+
+---
+Roadmap
+
+    -port the renderer to opentk instead of Veldrid
+    -crossplatform support
+    -goldsrc support upgrade 
+    -source engine support
